@@ -1,4 +1,4 @@
-﻿git <!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html ng-app="rectApp">
 <head>
     <title>GeeksforLess</title>
@@ -22,11 +22,11 @@
                     <div ng-repeat="rect in rects"
                         ng-style=rect.style
                         ng-click="selectRect(rect, $event)"
-                        ng-mousemove="mouseMove($event)"
+
                         class="rect"
                         id={{rect.id}}
                         >
-                        {{rect.x}} {{rect.y}} {{rect.width}} {{rect.height}} {{rect.style}}
+                        <!--{{rect.x}} {{rect.y}} {{rect.width}} {{rect.height}} {{rect.style}}-->
                     </div>
                 </div>
             </div>

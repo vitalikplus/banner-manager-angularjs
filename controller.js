@@ -2,12 +2,12 @@
         .controller("defaultCtrl", function ($scope) {
 
             $scope.rects = [
-                { id: 1, x: 100, y: 200, width: 300, height: 150, color: "FFFF00", style: {
+                { id: 1, x: 0, y: 0, width: 300, height: 150, color: "FFFF00", style: {
                     background: "#29FF54",
                     height: "150px",
                     width: "300px",
-                    left: "100px",
-                    top: "200px"
+                    left: "0",
+                    top: "0"
                     } },
                 { id: 2, x: 200, y: 300, width: 300, height: 150, color: "FFFF00", style: {
                     background: "#55FF00",
@@ -130,20 +130,12 @@
                 }
             }
 
-            // $scope.mouseMove = function(event) {
-            //     let id = event.target.getAttribute('id');
-            //     console.log('id = ', id)
-            //     console.log('movementX = ',event.movementX);
-            //     console.log('pageX = ',event.pageX);
-            //     console.log('offsetX = ',event.offsetX);
-            //     console.log('clientX = ',event.clientX);
-            // }
-
 //-------------------- Drag and Drop 
             
             function mouseDownHandler(e) {
-
-                let ball = e.target
+                let container = document.querySelector('.container');
+                let containerXY = getCoords(container);
+                let ball = e.target;
                 let coords = getCoords(ball);
                 let shiftX = e.pageX - coords.left;
                 let shiftY = e.pageY - coords.top;
@@ -151,8 +143,8 @@
                 moveAt(e);
 
                 function moveAt(e) {
-                    let x = e.pageX - shiftX;
-                    let y = e.pageY - shiftY;
+                    let x = e.pageX - containerXY.left - shiftX;
+                    let y = e.pageY - containerXY.top - shiftY;
                     ball.style.left = x + 'px';
                     ball.style.top = y + 'px';
                     $scope.rectSelected.x = x;
@@ -162,7 +154,6 @@
                     $scope.rects[index].style.left = x + "px"                    
                     $scope.rects[index].y = y;
                     $scope.rects[index].style.top = y + "px"                    
-                    // let element = document.getElementById(id);                    
                 }
 
                 document.onmousemove = function(e) {
@@ -174,6 +165,27 @@
                     ball.onmouseup = null;
                 };
 
+                ball.ondragstart = function() {
+                    return false;
+                };
+
+            }
+
+//Resize experiments
+            function mouseMoveHandler(e) {
+                // let container = document.querySelector('.container');
+                // let containerXY = getCoords(container);
+                // let ball = e.target;
+                // let coords = getCoords(ball);
+                // let box = ball.getBoundingClientRect;
+                // let shiftX = e.pageX - coords.left;
+                // let shiftY = e.pageY - coords.top;                
+                // if (shiftX<10 || shiftX>140) {
+                //     console.log("shiftX ,shiftX", shiftX, shiftY );
+                //     console.log('can change the width')
+                //     element.classList.add("resize") //case none rect is selected
+                    
+                // }
             }
 
             function getCoords(elem) {
@@ -197,17 +209,6 @@
                 
                 // (5)
                 return { top: Math.round(top), left: Math.round(left) };
-            }
-// ---------------Resizing experiments
-            function mouseMoveHandler(e) {
-                console.log('clientX =', e.clientX);
-                let ball = e.target
-                let coords = getCoords(ball);
-                let shiftX = e.pageX - coords.left;
-                let shiftY = e.pageY - coords.top;
-                console.log('shiftX =', shiftX);
-                console.log('shiftY =', shiftY);
-
             }
 
         });
