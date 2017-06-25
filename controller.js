@@ -2,12 +2,12 @@
         .controller("defaultCtrl", function ($scope) {
 
             $scope.rects = [
-                { id: 1, x: 0, y: 0, width: 300, height: 150, color: "FFFF00", style: {
+                { id: 1, x: 100, y: 200, width: 300, height: 150, color: "FFFF00", style: {
                     background: "#29FF54",
                     height: "150px",
                     width: "300px",
-                    left: "0",
-                    top: "0"
+                    left: "100px",
+                    top: "200px"
                     } },
                 { id: 2, x: 200, y: 300, width: 300, height: 150, color: "FFFF00", style: {
                     background: "#55FF00",
@@ -171,9 +171,10 @@
 
             }
 
-//Resize experiments
+//Resize experiments. It does not work yet. 
             function mouseMoveHandler(e) {
                 // let container = document.querySelector('.container');
+                // let element = e.target;
                 // let containerXY = getCoords(container);
                 // let ball = e.target;
                 // let coords = getCoords(ball);
@@ -183,7 +184,7 @@
                 // if (shiftX<10 || shiftX>140) {
                 //     console.log("shiftX ,shiftX", shiftX, shiftY );
                 //     console.log('can change the width')
-                //     element.classList.add("resize") //case none rect is selected
+                //     element.classList.add("resize-width") //case none rect is selected
                     
                 // }
             }

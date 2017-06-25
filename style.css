@@ -14,3 +14,11 @@
     cursor: pointer;
     z-index: 100;
 }
+
+.resize-width {
+    /*cursor: e-resize;*/
+}
+
+.resize-height {
+    /*cursor: n-resize;*/
+}

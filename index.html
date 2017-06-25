@@ -17,17 +17,14 @@
     <div class="container" ng-controller="defaultCtrl">
 
         <div class="row">
-            <div class="col-xs-12">
-                <div class="well rectContainer">
-                    <div ng-repeat="rect in rects"
-                        ng-style=rect.style
-                        ng-click="selectRect(rect, $event)"
-
-                        class="rect"
-                        id={{rect.id}}
-                        >
-                        <!--{{rect.x}} {{rect.y}} {{rect.width}} {{rect.height}} {{rect.style}}-->
-                    </div>
+            <div class="well rectContainer">
+                <div ng-repeat="rect in rects"
+                    ng-style=rect.style
+                    ng-click="selectRect(rect, $event)"
+                    class="rect"
+                    id={{rect.id}}
+                    >
+                    <!--{{rect.x}} {{rect.y}} {{rect.width}} {{rect.height}} {{rect.style}}-->
                 </div>
             </div>
         </div>
