@@ -1,0 +1,107 @@
+﻿git <!DOCTYPE html>
+<html ng-app="rectApp">
+<head>
+    <title>GeeksforLess</title>
+	<script src="Libraries/jscolor.js"></script>
+    <script src="Libraries/angular.js"></script>
+    <link href="Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="Libraries/bootstrap.css" rel="stylesheet" />
+
+    <!-- Компоненты приложения вынесенные в отдельные файлы -->
+    <script src="app.js"></script>
+    <script src="controller.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="container" ng-controller="defaultCtrl">
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="well rectContainer">
+                    <div ng-repeat="rect in rects"
+                        ng-style=rect.style
+                        ng-click="selectRect(rect, $event)"
+                        ng-mousemove="mouseMove($event)"
+                        class="rect"
+                        id={{rect.id}}
+                        >
+                        {{rect.x}} {{rect.y}} {{rect.width}} {{rect.height}} {{rect.style}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row well">
+            <div class="col-xs-2">
+                <!-- При введении значений в поля action и priority angular автоматически создает объект task и устанавливает для него свойства. -->
+                <div class="form-group row">
+                    <label for="xText">x:</label>
+                    <input id="xText"
+                            type="number"
+                            min = "0"
+                            class="form-control"
+                            ng-model="rectSelected.x"
+                            ng-change="changeInput('x')"
+                            ng-readonly="inputReadonly"/>
+                </div>
+                <div class="form-group row">
+                    <label for="yText">y:</label>
+                    <input id="yText"
+                            type="number"
+                            min = "0"
+                            class="form-control"
+                            ng-model="rectSelected.y"
+                            ng-change="changeInput('y')"
+                            ng-readonly="inputReadonly" />
+                </div> 
+            </div>
+            <div class="col-xs-2 col-xs-offset-1">  
+                <div class="form-group row">
+                    <label for="wText">width:</label>
+                    <input id="wText"
+                            type="number"
+                            min = "0"
+                            class="form-control"
+                            ng-model="rectSelected.width"
+                            ng-change="changeInput('width')"                            
+                            ng-readonly="inputReadonly" />
+                </div>                                                   
+                <div class="form-group row">
+                    <label for="hText">height:</label>
+                    <input id="hText"
+                            type="number"
+                            min = "0"
+                            class="form-control"
+                            ng-model="rectSelected.height"
+                            ng-change="changeInput('height')"                            
+                            ng-readonly="inputReadonly" />
+                </div>
+            </div>
+            <div class="col-xs-2 col-xs-offset-1">  
+                <div class="form-group row">
+                    <label for="hText">Color:</label>
+                    <input id="hText"
+                            class="form-control jscolor"
+                            value="FFFFFF"
+                            ng-model="rectSelected.color"
+                            ng-change="changeInput('color')"
+                            ng-readonly="inputReadonly" />
+                </div>                
+            </div>
+            <div class="col-xs-3 col-xs-offset-1">      
+                <button class="btn btn-success btn-block"
+                        ng-click="addRect()"
+                        ng-disabled="rectAddDisabled">
+                        Add
+                </button>
+                <button class="btn btn-danger btn-block"
+                        ng-click="deleteRect(rect)"
+                        ng-disabled="rectDeleteDisabled">
+                        Delete
+                </button>
+            </div>
+
+        </div> <!--end of row-->
+    </div>  <!--end of container-->
+</body>
+</html>

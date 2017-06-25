@@ -1,0 +1,16 @@
+.rectContainer {
+    position: relative;
+    height: calc(100vh - 248px);
+    overflow: hidden;
+}
+
+.rect {
+    position: absolute;
+    left: calc(50% - 150px);
+    top: calc(50% - 75px);
+}
+.active {
+    border: 3px solid red;
+    cursor: pointer;
+    z-index: 100;
+}

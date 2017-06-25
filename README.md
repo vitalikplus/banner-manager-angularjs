@@ -1,0 +1,1 @@
+### Simple Banner Manager on Angular.js
